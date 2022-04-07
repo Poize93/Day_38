@@ -1,0 +1,23 @@
+use test
+db.createCollection('user');
+
+// Create
+db.user.insertOne({name:'xxx', age:25});
+db.user.insertMany([{name:'AAA' , age:20},{name:'BBB', age:25}]);
+db.user.insertMany([{name:'CCC', age:28 , gender:'male'},{name:'DDD', gender:'male'}]);
+
+
+//Read
+db.user.find();
+db.user.findOne();
+db.user.findOne({name:'AAA'});
+
+//update
+db.user.updateOne({age:25},{$set:{age:26}});
+db.user.updateOne({age:26},{$set:{age:25, name:'RRR'} });
+db.user.updateMany({age:25},{$set:{age:27, name:'ggg'} });
+db.user.update({age:27},{$set:{age:27, name:'jjj'} });
+db.user.update({age:27},{$set:{age:27, name:'kkk'} },{multi:true});
+db.user.findOneAndUpdate({age:27},{$set:{ name:'AAA'} });
+db.user.findOneAndUpdate({age:27},{$set:{ name:'UUU'}},{returnNewDocument:true });
+
